@@ -1,13 +1,13 @@
-# llama3_mt
+# Evaluating the machine translation capability of Llama-3 Models
+In this project, we evaluate the machine translation capability of Llama-3 models on [facebook/flores](https://huggingface.co/datasets/facebook/flores).
 
-
-# Results
+## Results
 We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook/flores). The translations are evaluated using `chrF++` with the signature of `nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.4.2`.
 
 * [8B Model X-English](#8b-model-x-english)
 
 
-## <a name="head1234"></a>8B Model X-English
+### 8B Model X-English
 |languages|0-shot Base|5-shot Base|0-shot Instruct|5-shot Instruct|
 |---------|----------:|----------:|--------------:|--------------:|
 |ace_Arab |      11.16|      20.78|          20.69|          22.51|
