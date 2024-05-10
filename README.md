@@ -4,7 +4,7 @@
 # Results
 We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook/flores). The translations are evaluated using `chrF++` with the signature of `nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.4.2`.
 
-* [8B Model X-English](https://github.com/minghao-wu/llama3_mt?tab=readme-ov-file#8b-model-x-english)
+* [8B Model X-English](#8b-model-x-english)
 
 
 ## <a name="head1234"></a>8B Model X-English
