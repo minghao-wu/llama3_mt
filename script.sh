@@ -20,11 +20,11 @@ module load cuda/12.1.0-gcc-8.5.0-5lkaqss
 nshots=$1
 
 # python run_base.py \
-#     --model_id meta-llama/Meta-Llama-3-70B \
+#     --model_id meta-llama/Meta-Llama-3-8B \
 #     --results_dir /home/minghaow/llamamt-project/llama3_mt/translations/$nshots-shot-base \
 #     --nshots $nshots
 
 python run_instruct.py \
-    --model_id meta-llama/Meta-Llama-3-70B-Instruct \
+    --model_id meta-llama/Meta-Llama-3-8B-Instruct \
     --results_dir /home/minghaow/llamamt-project/llama3_mt/translations/$nshots-shot-instruct \
     --nshots $nshots

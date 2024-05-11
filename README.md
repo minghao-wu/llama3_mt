@@ -1,10 +1,44 @@
-# Evaluating the machine translation capability of Llama-3 Models
-In this project, we evaluate the machine translation capability of Llama-3 models on [facebook/flores](https://huggingface.co/datasets/facebook/flores).
+# Evaluating the Machine Translation Capability of Llama-3 Models
+
+In this project, we evaluate the machine translation capabilities of [Llama-3 models](https://huggingface.co/collections/meta-llama/meta-llama-3-66214712577ca38149ebb2b6) using the [facebook/flores](https://huggingface.co/datasets/facebook/flores) dataset. We assess these models in zero-shot and five-shot settings. Additionally, we evaluate the models in a selective translation setting, where the model is required to translate only part of the source text.
+
+## Setup
+```
+datasets==2.19.1
+flash-attn==2.5.8
+transformers==4.40.2
+vllm==0.4.1
+sacrebleu==2.4.2
+torch==2.2.1
+pytablewriter==1.2.0
+```
+## Generate Your Own Translations
+To translate with the base models, you can run
+```
+python run_base.py \
+    --model_id meta-llama/Meta-Llama-3-70B \
+    --results_dir <YOU_OUTPUT_DIR> \
+    --nshots <NUM_SHOTS>
+```
+To translate with the instruct models, you can run
+```
+python run_instruct.py \
+    --model_id meta-llama/Meta-Llama-3-8B-Instruct \
+    --results_dir <YOU_OUTPUT_DIR> \
+    --nshots <NUM_SHOTS>
+```
+**NOTE: The source and target languages are hard-coded in the program. You need to modify them yourself.**
 
 ## Results
-We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook/flores). The translations are evaluated using `chrF++` with the signature of `nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.4.2`.
+We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook/flores). The translations are evaluated using `chrF++` with the signature of `nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.4.2`. The raw translations can be found under the folder `translations`.
+
+**NOTE: We require the instruct models to generate translations using the JSON schema `{"translation": "string"}`. The overall success rate of generating in JSON mode exceeds 98% (98.5% for meta-llama/Meta-Llama-3-8B-Instruct and 99.5% for meta-llama/Meta-Llama-3-70B-Instruct). Therefore, we omit the rare failures, believing they will not significantly affect the final results.**
 
 * [8B Model X-English](#8b-model-x-english)
+* [8B Model English-X](#8b-model-english-x)
+* [70B Model X-English](#70b-model-x-english)
+* [70B Model English-X](#70b-model-english-x)
+* [Selective Translation](#selective-translation)
 
 
 ### 8B Model X-English
@@ -213,3 +247,14 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |zho_Hant |      50.76|      52.36|          50.10|          51.48|
 |zsm_Latn |      61.81|      63.68|          60.43|          62.11|
 |zul_Latn |      23.83|      29.61|          29.22|          32.32|
+
+### 8B Model English-X
+
+
+### 70B Model X-English
+
+
+### 70B Model English-X
+
+
+### Selective Translation

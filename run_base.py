@@ -265,8 +265,8 @@ data = load_dataset("facebook/flores", "all")
 # zero-shot translation of base model
 for k, v in language_map.items():
     
-    src_lang = k 
-    tgt_lang = "eng_Latn"
+    src_lang = "eng_Latn"
+    tgt_lang = k
     if src_lang == tgt_lang:
         continue
     output_path = os.path.join(results_dir, f"{src_lang}-to-{tgt_lang}.jsonl")
