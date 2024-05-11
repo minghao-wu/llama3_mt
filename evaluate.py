@@ -21,9 +21,12 @@ args = parser.parse_args()
 chrf = CHRF(word_order=2)
 
 paths = glob.glob(f"{args.results_dir}/*to-eng_Latn.jsonl")
-assert len(paths) == 203
+print(len(paths))
+assert 203 <= len(paths) <= 204
 results = []
 for path in tqdm(paths):
+    if "results" in path:
+        continue
     data = read_jsonl(path)
     refs = [[d["ref_text"] for d in data]]
     hyps = [d["hyp_text"] for d in data]
@@ -38,7 +41,8 @@ for path in tqdm(paths):
         "tgt_lang": data[0]["tgt_lang"],
         "model_id": data[0]["model_id"],
         "score": score.score,
-        "signature": str(chrf.get_signature())
+        "signature": str(chrf.get_signature()),
+        "pass@1": len(hyps) / 1012
     }
     results.append(dic)
 
