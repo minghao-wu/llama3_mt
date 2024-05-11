@@ -42,7 +42,6 @@ for path in tqdm(paths):
         "model_id": data[0]["model_id"],
         "score": score.score,
         "signature": str(chrf.get_signature()),
-        "pass@1": len(hyps) / 1012
     }
     results.append(dic)
 

@@ -239,12 +239,23 @@ def wrap_chat_template(llm, prompt):
     )
     return text
 
+def read_jsonl(path):
+    with open(path, "r") as f:
+        return [json.loads(l) for l in f]
+
 def write_jsonl(lst, path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    print(f"Writing to {path}")
+    
+    if os.path.exists(path):
+        exist_data = read_jsonl(path)
+        lst = exist_data + lst
+    
+    print(f"Writing {len(lst)} / 1012 examples to {path}")
     with open(path, "w") as f:
         for item in lst:
             f.write(json.dumps(item, ensure_ascii=False) + "\n")
+
+
 
 def sample_in_context_examples(nshots, data, src_lang, tgt_lang):
     data = data.shuffle(seed=42)
@@ -259,8 +270,10 @@ def sample_in_context_examples(nshots, data, src_lang, tgt_lang):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model_id", type=str, required=True)
+parser.add_argument("--dataset", type=str, required=True)
+parser.add_argument("--tgt_lang", type=str, required=True)
 parser.add_argument("--results_dir", type=str, required=True)
-parser.add_argument("--nshots", type=int, default=0)
+parser.add_argument("--nshots", type=int, required=True)
 args = parser.parse_args()
 print(args)
 
@@ -271,22 +284,44 @@ sampling_params = SamplingParams(
     temperature=0.6, top_p=0.9, max_tokens=2048
 )
 llm = LLM(model=model_id, tensor_parallel_size=2, max_model_len=4096)
-data = load_dataset("facebook/flores", "all")
+data = load_dataset(args.dataset, "all")
 
-# zero-shot translation of base model
+count = 0
 for k, v in language_map.items():
-    
-    src_lang = "eng_Latn"
-    tgt_lang = k
+    print("==============================")
+    print(f"Translating {count} / 203")
+    count += 1
+    if args.tgt_lang == "all":
+        src_lang = "eng_Latn"
+        tgt_lang = k
+    elif args.tgt_lang == "eng_Latn":
+        src_lang = k
+        tgt_lang = "eng_Latn"
+    else:
+        raise ValueError("tgt_lang must be 'all' or 'eng_Latn'")
+
     if src_lang == tgt_lang:
         continue
-    output_path = os.path.join(results_dir, f"{src_lang}-to-{tgt_lang}.jsonl")
-    if os.path.exists(output_path):
-        print(f"Skipping {output_path}")
-        continue
 
-    src_sents = data["devtest"][f"sentence_{src_lang}"]
-    tgt_sents = data["devtest"][f"sentence_{tgt_lang}"]
+    output_path = os.path.join(results_dir, f"{src_lang}-to-{tgt_lang}.jsonl")
+
+    if os.path.exists(output_path):
+        exist_translation = read_jsonl(output_path)
+        print(f"Existing translations: {len(exist_translation)} / 1012 examples for {src_lang} to {tgt_lang}")
+        exist_src_sents = [d["src_text"] for d in exist_translation]
+    
+    src_sents = []
+    tgt_sents = []
+    for d in data["devtest"]:
+        if d[f"sentence_{src_lang}"] not in exist_src_sents:
+            src_sents.append(d[f"sentence_{src_lang}"])
+            tgt_sents.append(d[f"sentence_{tgt_lang}"])
+    if len(src_sents) == 0:
+        print(f"No new examples for {src_lang} to {tgt_lang}")
+        continue
+    else:
+        print(f"Translating {len(src_sents)} examples from {src_lang} to {tgt_lang}")
+
     if args.nshots == 0:
         prompts = [format_base_model_sentence_pair(language_map[src_lang], language_map[tgt_lang], src_sent, None) for src_sent, tgt_sent in zip(src_sents, tgt_sents)]
     else:
@@ -314,5 +349,4 @@ for k, v in language_map.items():
             results.append(dic)
         except:
             continue
-    print(len(results))
     write_jsonl(results, output_path)

@@ -16,12 +16,10 @@ for z, f, zi, fi in zip(zero_base, five_base, zero_instruct, five_instruct):
     assert z["src_lang"] == f["src_lang"] == zi["src_lang"] == fi["src_lang"]
     assert z["tgt_lang"] == f["tgt_lang"] == zi["tgt_lang"] == fi["tgt_lang"]
     assert z["signature"] == f["signature"] == zi["signature"] == fi["signature"]
-    zi_rate = round(zi["pass@1"] * 100, 2)
-    fi_rate = round(fi["pass@1"] * 100, 2)
-    lines.append([z["src_lang"], round(z["score"], 2), round(f["score"], 2), round(zi["score"], 2), round(fi["score"], 2), zi_rate, fi_rate])
+    lines.append([z["src_lang"], round(z["score"], 2), round(f["score"], 2), round(zi["score"], 2), round(fi["score"], 2)])
 writer = MarkdownTableWriter(
     table_name="8B Model X-English",
-    headers=["languages", "0-shot Base", "5-shot Base", "0-shot Instruct", "5-shot Instruct", "0-shot Pass@1", "5-shot Pass@1"],
+    headers=["languages", "0-shot Base", "5-shot Base", "0-shot Instruct", "5-shot Instruct"],
     value_matrix=lines,
 )
 
