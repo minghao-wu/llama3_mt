@@ -16,9 +16,9 @@
 export HF_HOME=/nfsdata/data/minghaow/llamamt-project/cache
 module load cuda/12.1.0-gcc-8.5.0-5lkaqss
 
-# for model in meta-llama/Meta-Llama-3-8B ; do
+# for model in meta-llama/Meta-Llama-3-70B ; do
 #     for nshots in 0 5 ; do
-#         for tgt_lang in all ; do 
+#         for tgt_lang in eng_Latn ; do 
 #             echo "sbatch -J translate-base-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_base.sh $nshots $model $tgt_lang"
 #             sbatch -J translate-base-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_base.sh $nshots $model $tgt_lang
 #         done
@@ -26,9 +26,9 @@ module load cuda/12.1.0-gcc-8.5.0-5lkaqss
 # done
 
 
-# for model in meta-llama/Meta-Llama-3-8B-Instruct ; do
+# for model in meta-llama/Meta-Llama-3-70B-Instruct ; do
 #     for nshots in 0 5 ; do
-#         for tgt_lang in all ; do 
+#         for tgt_lang in eng_Latn ; do 
 #             echo "sbatch -J translate-instruct-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang"
 #             sbatch -J translate-instruct-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang
 #             # bash /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang
@@ -36,9 +36,9 @@ module load cuda/12.1.0-gcc-8.5.0-5lkaqss
 #     done
 # done
 
-nshots=5
+nshots=0
 model_id=meta-llama/Meta-Llama-3-8B-Instruct
-tgt_lang=eng_Latn
+tgt_lang=all
 
 python run_api.py \
     --model_id $model_id \
@@ -46,3 +46,4 @@ python run_api.py \
     --tgt_lang $tgt_lang \
     --results_dir /home/minghaow/llamamt-project/llama3_mt/translations/$nshots-shot-instruct/Meta-Llama-3-8B-Instruct \
     --nshots $nshots
+
