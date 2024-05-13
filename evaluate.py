@@ -28,6 +28,7 @@ for path in tqdm(paths):
     if "results" in path:
         continue
     data = read_jsonl(path)
+    print(path, len((data)))
     refs = [[d["ref_text"] for d in data]]
     hyps = [d["hyp_text"] for d in data]
     try:

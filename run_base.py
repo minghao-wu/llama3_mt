@@ -264,7 +264,7 @@ results_dir = os.path.join(args.results_dir, os.path.basename(model_id))
 sampling_params = SamplingParams(
     temperature=0.6, top_p=0.9, max_tokens=2048, stop="\n"
 )
-llm = LLM(model=model_id, tensor_parallel_size=2, max_model_len=4096)
+llm = LLM(model=model_id, tensor_parallel_size=2, max_model_len=4096, enforce_eager=True)
 data = load_dataset(args.dataset, "all")
 
 

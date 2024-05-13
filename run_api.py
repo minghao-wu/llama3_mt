@@ -289,9 +289,9 @@ def fix_json_string(s):
     return s
 
 def get_response(system_prompt, prompt, model_id):
-    
+    translation, output = None, None
     retry = 0
-    while True:
+    while retry < 16:
         try:
             output = send_request(system_prompt, prompt, model_id)
             fixed_output = fix_json_string(output)
@@ -299,6 +299,7 @@ def get_response(system_prompt, prompt, model_id):
             break
         except Exception as e:
             print(e)
+            print(output)
             retry += 1
             print(f"Retry {retry} times")
     return translation, output
@@ -389,6 +390,7 @@ for k, v in language_map.items():
             "prompt": prompt,
             "generated_text": generated_text
         }
-        results.append(dic)
+        if translation:
+            results.append(dic)
 
     write_jsonl(results, output_path)
