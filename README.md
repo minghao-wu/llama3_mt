@@ -1,8 +1,8 @@
 # Evaluating the Machine Translation Capability of Llama-3 Models
 
-In this project, we evaluate the machine translation capabilities of [Llama-3 models](https://huggingface.co/collections/meta-llama/meta-llama-3-66214712577ca38149ebb2b6) using the [facebook/flores](https://huggingface.co/datasets/facebook/flores) dataset. We assess these models in zero-shot and five-shot settings. Additionally, we evaluate the models in a selective translation setting, where the model is required to translate only part of the source text.
+In this project, we evaluate the machine translation capabilities of [Llama-3 models](https://huggingface.co/collections/meta-llama/meta-llama-3-66214712577ca38149ebb2b6) using the [facebook/flores](https://huggingface.co/datasets/facebook/flores) dataset. We assess these models on the X-English translations in zero-shot and five-shot settings. 
 
-**NOTE: Flores-200 dataset likely leaked into the training set of the Llama-3 models.**
+**NOTE: The Flores-200 dataset likely leaked into the training set of the Llama-3 models.**
 
 ## Setup
 ```
