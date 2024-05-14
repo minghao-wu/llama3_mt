@@ -2,7 +2,7 @@
 
 In this project, we evaluate the machine translation capabilities of [Llama-3 models](https://huggingface.co/collections/meta-llama/meta-llama-3-66214712577ca38149ebb2b6) using the [facebook/flores](https://huggingface.co/datasets/facebook/flores) dataset. We assess these models in zero-shot and five-shot settings. Additionally, we evaluate the models in a selective translation setting, where the model is required to translate only part of the source text.
 
-**NOTE: The results might not be valid because the Flores-200 dataset likely leaked into the training set of the Llama-3 models.**
+**NOTE: Flores-200 dataset likely leaked into the training set of the Llama-3 models.**
 
 ## Setup
 ```
@@ -42,6 +42,19 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 
 * [8B Model X-English](#8b-model-x-english)
 * [70B Model X-English](#70b-model-x-english)
+
+## Citation
+
+```
+@misc{alpaca,
+  author = {Minghao Wu},
+  title = {Evaluating the Machine Translation Capability of Llama-3 Models},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/tatsu-lab/stanford_alpaca}},
+}
+```
 
 ### 8B Model X-English
 
@@ -251,11 +264,6 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |zsm_Latn |      61.81|      63.68|          60.45|          62.13|               37.47|
 |zul_Latn |      23.83|      29.61|          29.18|          32.31|               14.61|
 
-### 8B Model English-X
-
 
 ### 70B Model X-English
-
-
-### 70B Model English-X
 
