@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=translate
-#SBATCH --exclude=node[01-04]
+#SBATCH --exclude=node[01-06]
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=290G
-#SBATCH --gres=gpu:2
-#SBATCH --partition=A100
+#SBATCH --gres=gpu:4
+# SBATCH --partition=A100
 #SBATCH --time=30-00:00:00
 # SBATCH --mail-type=ALL
 # SBATCH --mail-user=minghao.wu@monash.edu

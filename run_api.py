@@ -275,6 +275,10 @@ def find_last_double_quote(char_list):
     return -1  # Return -1 if no double quote is found
 
 def fix_json_string(s):
+    if '"}' not in s:
+        s = s.replace('}', '"}')
+    if s[-1] == ".":
+        s = s.replace(".", "")
     quotes_positions = [
         find_kth_double_quote(s, 1),
         find_kth_double_quote(s, 2),
@@ -286,6 +290,7 @@ def fix_json_string(s):
         if s[i] == '"' and i not in quotes_positions:
             s[i] = "####"
     s = "".join(s)
+    
     return s
 
 def get_response(system_prompt, prompt, model_id):
@@ -356,6 +361,8 @@ for k, v in language_map.items():
         exist_translation = read_jsonl(output_path)
         print(f"Existing translations: {len(exist_translation)} / 1012 examples for {src_lang} to {tgt_lang}")
         exist_src_sents = [d["src_text"] for d in exist_translation]
+    else:
+        exist_src_sents = []
     
     src_sents = []
     tgt_sents = []
