@@ -52,7 +52,7 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
   year = {2024},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/tatsu-lab/stanford_alpaca}},
+  howpublished = {\url{https://github.com/minghao-wu/llama3_mt}},
 }
 ```
 
