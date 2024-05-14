@@ -46,7 +46,7 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 ## Citation
 
 ```
-@misc{alpaca,
+@misc{llama3_mt,
   author = {Minghao Wu},
   title = {Evaluating the Machine Translation Capability of Llama-3 Models},
   year = {2024},
