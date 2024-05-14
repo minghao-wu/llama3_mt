@@ -26,27 +26,15 @@ module load cuda/12.1.0-gcc-8.5.0-5lkaqss
 # done
 
 
-for model in meta-llama/Meta-Llama-3-70B-Instruct ; do
-    for nshots in 0 5 ; do
-        for tgt_lang in eng_Latn ; do 
-            echo "sbatch -J translate-instruct-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang"
-            # sbatch -J translate-instruct-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang
-            # bash /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang
-        done
-    done
-done
-
-# nshots=0
-# model_id=meta-llama/Meta-Llama-3-70B-Instruct
-# tgt_lang=eng_Latn
-
-# python run_api.py \
-#     --model_id $model_id \
-#     --dataset facebook/flores \
-#     --tgt_lang $tgt_lang \
-#     --results_dir /home/minghaow/llamamt-project/llama3_mt/translations/$nshots-shot-instruct/$(basename $model_id) \
-#     --nshots $nshots
-
+# for model in meta-llama/Meta-Llama-3-70B-Instruct ; do
+#     for nshots in 0 5 ; do
+#         for tgt_lang in eng_Latn ; do 
+#             echo "sbatch -J translate-instruct-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang"
+#             # sbatch -J translate-instruct-$nshots-$(basename $model)-$tgt_lang /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang
+#             # bash /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh $nshots $model $tgt_lang
+#         done
+#     done
+# done
 
 # nshots=5
 # model_id=meta-llama/Meta-Llama-3-70B-Instruct
@@ -59,4 +47,5 @@ done
 #     --results_dir /home/minghaow/llamamt-project/llama3_mt/translations/$nshots-shot-instruct/$(basename $model_id) \
 #     --nshots $nshots
 
-# bash /home/minghaow/llamamt-project/llama3_mt/submit_base.sh 5 meta-llama/Meta-Llama-3-70B eng_Latn
+
+bash /home/minghaow/llamamt-project/llama3_mt/submit_instruct.sh 5 meta-llama/Meta-Llama-3-70B eng_Latn

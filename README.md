@@ -68,6 +68,7 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |afr_Latn |      71.14|      73.14|          69.68|          71.48|               53.62|
 |ajp_Arab |      56.75|      59.44|          54.88|          57.01|               33.45|
 |aka_Latn |      19.32|      28.98|          27.07|          29.03|                7.87|
+|als_Latn |      58.56|      61.13|          57.65|          59.20|               33.73|
 |amh_Ethi |      22.14|      29.81|          23.46|          24.82|                4.10|
 |apc_Arab |      54.38|      56.81|          52.33|          54.60|               29.70|
 |arb_Arab |      59.41|      60.67|          57.65|          59.24|               33.30|
@@ -118,6 +119,7 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |fra_Latn |      64.94|      66.30|          65.04|          65.53|               42.02|
 |fur_Latn |      53.08|      58.68|          51.05|          56.20|               29.28|
 |fuv_Latn |      14.42|      22.33|          22.01|          24.74|                4.79|
+|gaz_Latn |      13.20|      21.74|          20.75|          23.29|                4.54|
 |gla_Latn |      44.51|      46.69|          40.01|          42.70|               21.09|
 |gle_Latn |      52.28|      55.10|          48.54|          50.95|               28.53|
 |glg_Latn |      62.34|      63.70|          62.15|          62.94|               37.42|
@@ -145,17 +147,18 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |kas_Arab |      21.17|      34.39|          29.63|          34.48|                7.56|
 |kas_Deva |      17.85|      30.07|          26.41|          30.31|                7.18|
 |kat_Geor |      47.16|      49.48|          46.47|          47.59|               12.51|
-|knc_Arab |       7.10|      14.98|          16.46|          19.68|                2.54|
-|knc_Latn |      11.50|      22.28|          23.23|          25.96|                5.04|
 |kaz_Cyrl |      44.42|      50.71|          45.69|          48.46|               15.35|
 |kbp_Latn |      13.97|      22.22|          22.25|          23.92|                3.86|
 |kea_Latn |      46.32|      55.53|          46.63|          52.61|               35.17|
+|khk_Cyrl |      33.33|      40.56|          35.33|          38.99|                9.43|
 |khm_Khmr |      39.02|      44.93|          36.82|          38.28|               10.09|
 |kik_Latn |      18.62|      26.13|          25.72|          27.63|                6.66|
 |kin_Latn |      26.97|      31.56|          30.64|          32.66|               12.50|
 |kir_Cyrl |      37.49|      42.15|          39.23|          41.72|                9.53|
 |kmb_Latn |      12.37|      21.86|          23.02|          25.31|                5.24|
 |kmr_Latn |      35.47|      38.27|          35.21|          38.16|               14.87|
+|knc_Arab |       7.10|      14.98|          16.46|          19.68|                2.54|
+|knc_Latn |      11.50|      22.28|          23.23|          25.96|                5.04|
 |kon_Latn |      18.93|      26.27|          25.95|          28.37|                5.82|
 |kor_Hang |      50.98|      52.04|          49.68|          51.26|               23.65|
 |lao_Laoo |      27.79|      34.19|          27.64|          28.25|                7.64|
@@ -178,10 +181,8 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |min_Arab |      10.10|      17.11|          19.87|          22.19|NA                  |
 |min_Latn |      45.41|      51.28|          42.12|          47.98|               17.83|
 |mkd_Cyrl |      61.09|      63.29|          60.54|          62.26|               35.93|
-|plt_Latn |      25.40|      33.31|          30.57|          32.95|               13.40|
 |mlt_Latn |      63.52|      66.82|          60.08|          62.67|               38.24|
 |mni_Beng |       9.12|      21.58|          19.37|          24.40|                3.35|
-|khk_Cyrl |      33.33|      40.56|          35.33|          38.99|                9.43|
 |mos_Latn |      12.89|      21.01|          21.65|          24.15|                4.07|
 |mri_Latn |      32.92|      37.61|          33.29|          35.73|               16.36|
 |mya_Mymr |      32.92|      39.21|          31.75|          34.17|                3.52|
@@ -193,16 +194,16 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |nus_Latn |       9.51|      17.51|          19.55|          22.12|                3.61|
 |nya_Latn |      22.68|      28.86|          27.56|          30.58|               11.86|
 |oci_Latn |      68.46|      70.45|          67.07|          68.94|               45.60|
-|gaz_Latn |      13.20|      21.74|          20.75|          23.29|                4.54|
 |ory_Orya |      43.90|      47.63|          41.72|          44.61|               14.19|
 |pag_Latn |      32.71|      38.69|          36.10|          38.56|               14.93|
 |pan_Guru |      49.84|      52.31|          46.49|          49.48|               21.52|
 |pap_Latn |      53.97|      61.84|          52.95|          59.07|               39.13|
+|pbt_Arab |      41.71|      46.89|          41.28|          45.38|                9.16|
 |pes_Arab |      56.79|      58.37|          55.79|          57.12|               29.21|
+|plt_Latn |      25.40|      33.31|          30.57|          32.95|               13.40|
 |pol_Latn |      53.18|      55.02|          53.72|          54.40|               26.05|
 |por_Latn |      68.23|      69.75|          68.38|          68.77|               45.32|
 |prs_Arab |      52.39|      57.38|          55.02|          56.47|               29.57|
-|pbt_Arab |      41.71|      46.89|          41.28|          45.38|                9.16|
 |quy_Latn |      16.42|      24.93|          24.95|          27.53|                5.16|
 |ron_Latn |      63.82|      64.97|          63.63|          64.16|               38.90|
 |run_Latn |      23.11|      27.69|          26.28|          29.07|                8.75|
@@ -221,7 +222,6 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |som_Latn |      21.51|      30.77|          28.64|          30.23|               11.78|
 |sot_Latn |      20.57|      27.62|          26.88|          28.95|               10.85|
 |spa_Latn |      56.16|      57.84|          56.35|          57.51|               27.10|
-|als_Latn |      58.56|      61.13|          57.65|          59.20|               33.73|
 |srd_Latn |      54.61|      57.75|          53.50|          57.24|               29.21|
 |srp_Cyrl |      62.57|      64.67|          62.00|          63.21|               38.67|
 |ssw_Latn |      20.09|      25.83|          25.58|          28.39|                9.08|
@@ -230,14 +230,14 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |swh_Latn |      53.62|      56.70|          52.00|          54.43|               36.36|
 |szl_Latn |      51.47|      56.88|          50.57|          53.75|               30.86|
 |tam_Taml |      44.65|      48.96|          42.50|          44.91|               12.73|
+|taq_Latn |      12.67|      21.38|          22.56|          25.18|                5.11|
+|taq_Tfng |       5.44|      16.28|          17.91|          19.22|                2.42|
 |tat_Cyrl |      42.75|      48.60|          43.79|          47.55|               10.59|
 |tel_Telu |      47.66|      53.62|          48.18|          50.39|               15.88|
 |tgk_Cyrl |      44.08|      48.17|          42.28|          46.55|               14.10|
 |tgl_Latn |      61.09|      62.82|          58.65|          60.37|               37.25|
 |tha_Thai |      51.71|      54.46|          51.17|          52.99|               20.48|
 |tir_Ethi |      12.34|      19.71|          19.45|          20.90|                2.58|
-|taq_Latn |      12.67|      21.38|          22.56|          25.18|                5.11|
-|taq_Tfng |       5.44|      16.28|          17.91|          19.22|                2.42|
 |tpi_Latn |      40.79|      44.81|          40.36|          43.87|               16.99|
 |tsn_Latn |      20.68|      26.94|          26.68|          28.32|                9.52|
 |tso_Latn |      19.68|      24.68|          24.96|          27.15|               10.03|
@@ -264,6 +264,24 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 |zsm_Latn |      61.81|      63.68|          60.45|          62.13|               37.47|
 |zul_Latn |      23.83|      29.61|          29.18|          32.31|               14.61|
 
-
 ### 70B Model X-English
 
+
+
+8B 0-shot base x-en check
+8B 0-shot base en-x check
+8B 5-shot base x-en check
+8B 5-shot base en-x check
+8B 0-shot instruct x-en check
+8B 0-shot instruct en-x 
+8B 5-shot instruct x-en check
+8B 5-shot instruct en-x
+
+70B 0-shot base x-en check
+70B 0-shot base en-x
+70B 5-shot base x-en todo
+70B 5-shot base en-x
+70B 0-shot instruct x-en check
+70B 0-shot instruct en-x
+70B 5-shot instruct x-en todo
+70B 5-shot instruct en-x

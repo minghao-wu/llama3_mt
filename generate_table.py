@@ -12,6 +12,10 @@ five_base = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/5-
 zero_instruct = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/0-shot-instruct/Meta-Llama-3-8B-Instruct/results-to-eng_Latn.jsonl")
 five_instruct = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/5-shot-instruct/Meta-Llama-3-8B-Instruct/results-to-eng_Latn.jsonl")
 
+zero_base = sorted(zero_base, key=lambda x: x["src_lang"])
+five_base = sorted(five_base, key=lambda x: x["src_lang"])
+zero_instruct = sorted(zero_instruct, key=lambda x: x["src_lang"])
+five_instruct = sorted(five_instruct, key=lambda x: x["src_lang"])
 
 lines = []
 for z, f, zi, fi in zip(zero_base, five_base, zero_instruct, five_instruct):

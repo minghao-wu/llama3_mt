@@ -287,7 +287,7 @@ llm = LLM(model=model_id, tensor_parallel_size=4, max_model_len=4096)
 data = load_dataset(args.dataset, "all")
 
 count = 0
-for k, v in language_map.items():
+for k, v in reversed(list(language_map.items())):
     print("==============================")
     print(f"Translating {count} / 203")
     count += 1

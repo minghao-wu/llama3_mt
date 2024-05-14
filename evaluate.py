@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 chrf = CHRF(word_order=2)
 
-paths = glob.glob(f"{args.results_dir}/*to-eng_Latn.jsonl")
+paths = glob.glob(f"{args.results_dir}/*-to-eng_Latn.jsonl")
 print(len(paths))
 assert 203 <= len(paths) <= 204
 results = []
@@ -29,6 +29,7 @@ for path in tqdm(paths):
         continue
     data = read_jsonl(path)
     print(path, len((data)))
+    assert len(data) >= 1010
     refs = [[d["ref_text"] for d in data]]
     hyps = [d["hyp_text"] for d in data]
     try:
