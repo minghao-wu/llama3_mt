@@ -13,7 +13,6 @@ import huggingface_hub
 MAX_RETRY = 16
 client = OpenAI(base_url="http://localhost:10086/v1", api_key="any_key_you_want")
 
-huggingface_hub.login(token="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")
 
 text = """
 Acehnese (Arabic script) | ace_Arab

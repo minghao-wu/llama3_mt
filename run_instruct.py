@@ -6,7 +6,6 @@ import huggingface_hub
 import json
 import argparse
 
-huggingface_hub.login(token="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")
 
 text = """
 Acehnese (Arabic script) | ace_Arab
@@ -283,7 +282,7 @@ results_dir = os.path.join(args.results_dir, os.path.basename(model_id))
 sampling_params = SamplingParams(
     temperature=0.6, top_p=0.9, max_tokens=2048
 )
-llm = LLM(model=model_id, tensor_parallel_size=4, max_model_len=4096)
+llm = LLM(model=model_id, tensor_parallel_size=2, max_model_len=4096)
 data = load_dataset(args.dataset, "all")
 
 count = 0
@@ -309,6 +308,8 @@ for k, v in reversed(list(language_map.items())):
         exist_translation = read_jsonl(output_path)
         print(f"Existing translations: {len(exist_translation)} / 1012 examples for {src_lang} to {tgt_lang}")
         exist_src_sents = [d["src_text"] for d in exist_translation]
+    else:
+        exist_src_sents = []
     
     src_sents = []
     tgt_sents = []

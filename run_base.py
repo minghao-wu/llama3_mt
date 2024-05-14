@@ -6,7 +6,6 @@ import huggingface_hub
 import json
 import argparse
 
-huggingface_hub.login(token="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")
 
 text = """
 Acehnese (Arabic script) | ace_Arab

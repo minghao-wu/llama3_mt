@@ -268,3 +268,20 @@ We run evaluations on [facebook/flores](https://huggingface.co/datasets/facebook
 
 
 
+8B 0-shot base x-en check
+8B 0-shot base en-x check
+8B 5-shot base x-en check
+8B 5-shot base en-x check
+8B 0-shot instruct x-en check
+8B 0-shot instruct en-x 
+8B 5-shot instruct x-en check
+8B 5-shot instruct en-x
+
+70B 0-shot base x-en check
+70B 0-shot base en-x
+70B 5-shot base x-en todo
+70B 5-shot base en-x
+70B 0-shot instruct x-en check
+70B 0-shot instruct en-x
+70B 5-shot instruct x-en todo
+70B 5-shot instruct en-x
