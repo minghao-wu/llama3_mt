@@ -20,7 +20,7 @@ args = parser.parse_args()
 
 chrf = CHRF(word_order=2)
 
-paths = glob.glob(f"{args.results_dir}/*-to-eng_Latn.jsonl")
+paths = glob.glob(f"{args.results_dir}/eng_Latn*")
 print(len(paths))
 assert 203 <= len(paths) <= 204
 results = []
@@ -47,4 +47,4 @@ for path in tqdm(paths):
     }
     results.append(dic)
 
-write_jsonl(results, f"{args.results_dir}/results-to-eng_Latn.jsonl")
+write_jsonl(results, f"{args.results_dir}/results-from-eng_Latn.jsonl")
