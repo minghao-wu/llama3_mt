@@ -282,11 +282,11 @@ results_dir = os.path.join(args.results_dir, os.path.basename(model_id))
 sampling_params = SamplingParams(
     temperature=0.6, top_p=0.9, max_tokens=2048
 )
-llm = LLM(model=model_id, tensor_parallel_size=2, max_model_len=4096)
+llm = LLM(model=model_id, tensor_parallel_size=4, max_model_len=4096)
 data = load_dataset(args.dataset, "all")
 
 count = 0
-for k, v in reversed(list(language_map.items())):
+for k, v in language_map.items():
     print("==============================")
     print(f"Translating {count} / 203")
     count += 1

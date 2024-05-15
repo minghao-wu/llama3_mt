@@ -7,10 +7,10 @@ def read_jsonl(path):
     with open(path, "r") as f:
         return [json.loads(l) for l in f]
 
-zero_base = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/0-shot-base/Meta-Llama-3-8B/results-to-eng_Latn.jsonl")
-five_base = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/5-shot-base/Meta-Llama-3-8B/results-to-eng_Latn.jsonl")
-zero_instruct = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/0-shot-instruct/Meta-Llama-3-8B-Instruct/results-to-eng_Latn.jsonl")
-five_instruct = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/5-shot-instruct/Meta-Llama-3-8B-Instruct/results-to-eng_Latn.jsonl")
+zero_base = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/0-shot-base/Meta-Llama-3-70B/results-to-eng_Latn.jsonl")
+five_base = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/5-shot-base/Meta-Llama-3-70B/results-to-eng_Latn.jsonl")
+zero_instruct = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/0-shot-instruct/Meta-Llama-3-70B-Instruct/results-to-eng_Latn.jsonl")
+five_instruct = read_jsonl("/home/minghaow/llamamt-project/llama3_mt/translations/5-shot-instruct/Meta-Llama-3-70B-Instruct/results-to-eng_Latn.jsonl")
 
 zero_base = sorted(zero_base, key=lambda x: x["src_lang"])
 five_base = sorted(five_base, key=lambda x: x["src_lang"])
@@ -25,7 +25,7 @@ for z, f, zi, fi in zip(zero_base, five_base, zero_instruct, five_instruct):
     gpt_score = chatgpt[z["src_lang"]] if z["src_lang"] in chatgpt else "NA"
     lines.append([z["src_lang"], round(z["score"], 2), round(f["score"], 2), round(zi["score"], 2), round(fi["score"], 2), gpt_score])
 writer = MarkdownTableWriter(
-    table_name="8B Model X-English",
+    table_name="70B Model X-English",
     headers=["languages", "0-shot Base", "5-shot Base", "0-shot Instruct", "5-shot Instruct", "0-shot gpt-3.5-turbo"],
     value_matrix=lines,
 )
