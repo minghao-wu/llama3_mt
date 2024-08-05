@@ -285,6 +285,7 @@ for k, v in language_map.items():
         continue
 
     output_path = os.path.join(results_dir, f"{src_lang}-to-{tgt_lang}.jsonl")
+    exist_src_sents = []
     if os.path.exists(output_path):
         exist_translation = read_jsonl(output_path)
         exist_src_sents = [d["src_text"] for d in exist_translation]
